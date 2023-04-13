@@ -10,18 +10,18 @@ namespace LINQ__5
         public static void Main()
         {
             const int currentYear = 2023;
-            
+
             PreserveFactory preserveFactory = new PreserveFactory();
             List<Preserve> preserves = new List<Preserve>(preserveFactory.Create());
 
             Console.WriteLine("Все запасы");
-            preserves.ForEach(preserve=>preserve.ShowInfo());
-            
+            preserves.ForEach(preserve => preserve.ShowInfo());
+
             var overduePreserves = preserves.Where(preserve => preserve.ExpirationDate < currentYear).ToList();
 
-            Console.WriteLine(new string('_',40));
+            Console.WriteLine(new string('_', 40));
             Console.WriteLine("Просрочка");
-            overduePreserves.ForEach(overduePreserve=>overduePreserve.ShowInfo());
+            overduePreserves.ForEach(overduePreserve => overduePreserve.ShowInfo());
         }
     }
 
@@ -64,12 +64,12 @@ namespace LINQ__5
             List<Preserve> preserves = new List<Preserve>();
             int dateOfProduction;
             int shelfLife;
-            
+
             for (int i = 0; i < countPreserves; i++)
             {
                 dateOfProduction = _random.Next(MinDateOfProduction, MaxDateOfProduction + 1);
                 shelfLife = _random.Next(MinShelfLife, MaxShelfLife + 1);
-                preserves.Add(new Preserve(dateOfProduction,shelfLife));
+                preserves.Add(new Preserve(dateOfProduction, shelfLife));
             }
 
             return preserves;
